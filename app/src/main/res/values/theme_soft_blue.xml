@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/theme_soft_blue_40</item>
+        <item name="colorPrimaryVariant">@color/theme_soft_blue_60</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/theme_soft_blue_20</item>
+        <item name="colorSecondaryVariant">@color/theme_soft_yellow_40</item>
+        <item name="colorOnSecondary">@color/theme_soft_cream_40</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">@color/theme_soft_blue_60</item>
+    </style>
+</resources>

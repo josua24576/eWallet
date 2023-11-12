@@ -1,0 +1,196 @@
+plugins {
+    id 'com.android.application'
+    id 'realm-android'
+}
+
+//apply plugin: 'com.android.application'
+//apply plugin: 'realm-android'
+
+android {
+    namespace 'com.nanvir.templateapps'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.nanvir.templateapps"
+        minSdk 28
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    sourceSets {
+        main {
+            res.srcDirs = [
+                    'src/main/res/layout/activities',
+                    'src/main/res/layout/fragments',
+                    'src/main/res/layout/contents',
+                    'src/main/res/layout/template',
+                    'src/main/res'
+            ]
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    applicationVariants.all {
+        variant ->
+            variant.outputs.each {
+                output ->
+                    project.ext { appName = 'gass' }
+                    def formattedDate = new Date().format('yyyyMMddHHmm')
+                    def newName = output.outputFile.name
+                    newName = newName.replace("app-", "$project.ext.appName-")
+                    newName = newName.replace("-release", "$versionName".replace(".", "") + "_" + formattedDate)
+                    newName = newName.replace("Flavor", "_")
+                    output.outputFileName = newName
+            }
+    }
+    flavorDimensions "versionCode"
+    productFlavors {
+        production {
+            applicationId 'com.nanvir.templateapps'
+            versionCode 1
+            versionName "1.0"
+            dimension "versionCode"
+            resValue "string", "app_name", "NANVIR"
+            multiDexEnabled true
+
+//            buildConfigField "java.util.Date", "buildTime", "new java.util.Date(" + getDateAsMillis() + "L)"
+            buildConfigField 'String', 'URL_APPS_SERVER', '"https://gass.sm.co.id/gass-api/mobile/"'
+            buildConfigField 'String', 'FOLDER_NAME', '"NANVIR_PROD"'
+
+            buildConfigField 'String', 'SMAPP', '"b114f09a496c0123a3aa7c8cb7754156"'
+            buildConfigField 'String', 'SMAPPS', '"44188a09d5b80b4668d143ad02382ffd"'
+        }
+        bypass {
+            applicationId 'com.nanvir.templateapps'
+            versionCode 1
+            versionName "1.0"
+            dimension "versionCode"
+            resValue "string", "app_name", "NANVIR"
+            multiDexEnabled true
+
+//            buildConfigField "java.util.Date", "buildTime", "new java.util.Date(" + getDateAsMillis() + "L)"
+            buildConfigField 'String', 'URL_APPS_SERVER', '"https://gass.sm.co.id/gass-api/mobile/"'
+            buildConfigField 'String', 'FOLDER_NAME', '"NANVIR_PROD"'
+
+            buildConfigField 'String', 'SMAPP', '"b114f09a496c0123a3aa7c8cb7754156"'
+            buildConfigField 'String', 'SMAPPS', '"44188a09d5b80b4668d143ad02382ffd"'
+        }
+        prodlike {
+            applicationId 'com.nanvir.templateapps'
+            versionCode 1
+            versionName "1.0"
+            dimension "versionCode"
+            resValue "string", "app_name", "NANVIR"
+            multiDexEnabled true
+
+//            buildConfigField "java.util.Date", "buildTime", "new java.util.Date(" + getDateAsMillis() + "L)"
+            buildConfigField 'String', 'URL_APPS_SERVER', '"https://gass.sm.co.id/gass-api/mobile/"'
+            buildConfigField 'String', 'FOLDER_NAME', '"NANVIR_PRODLIKE"'
+
+            buildConfigField 'String', 'SMAPP', '"b114f09a496c0123a3aa7c8cb7754156"'
+            buildConfigField 'String', 'SMAPPS', '"44188a09d5b80b4668d143ad02382ffd"'
+        }
+        sosialisasi {
+            applicationId 'com.nanvir.templateapps'
+            versionCode 1
+            versionName "1.0"
+            dimension "versionCode"
+            resValue "string", "app_name", "NANVIR"
+            multiDexEnabled true
+
+//            buildConfigField "java.util.Date", "buildTime", "new java.util.Date(" + getDateAsMillis() + "L)"
+            buildConfigField 'String', 'URL_APPS_SERVER', '"https://gass.sm.co.id/gass-api/mobile/"'
+            buildConfigField 'String', 'FOLDER_NAME', '"NANVIR_SOC"'
+
+            buildConfigField 'String', 'SMAPP', '"b114f09a496c0123a3aa7c8cb7754156"'
+            buildConfigField 'String', 'SMAPPS', '"44188a09d5b80b4668d143ad02382ffd"'
+        }
+        uat {
+            applicationId 'com.nanvir.templateapps'
+            versionCode 1
+            versionName "1.0"
+            dimension "versionCode"
+            resValue "string", "app_name", "NANVIR"
+            multiDexEnabled true
+
+//            buildConfigField "java.util.Date", "buildTime", "new java.util.Date(" + getDateAsMillis() + "L)"
+            buildConfigField 'String', 'URL_APPS_SERVER', '"https://gass.sm.co.id/gass-api/mobile/"'
+            buildConfigField 'String', 'FOLDER_NAME', '"NANVIR_UAT"'
+
+            buildConfigField 'String', 'SMAPP', '"b114f09a496c0123a3aa7c8cb7754156"'
+            buildConfigField 'String', 'SMAPPS', '"44188a09d5b80b4668d143ad02382ffd"'
+        }
+        qa {
+            applicationId 'com.nanvir.templateapps'
+            versionCode 1
+            versionName "1.0"
+            dimension "versionCode"
+            resValue "string", "app_name", "NANVIR"
+            multiDexEnabled true
+
+//            buildConfigField "java.util.Date", "buildTime", "new java.util.Date(" + getDateAsMillis() + "L)"
+            buildConfigField 'String', 'URL_APPS_SERVER', '"https://gass.sm.co.id/gass-api/mobile/"'
+            buildConfigField 'String', 'FOLDER_NAME', '"NANVIR_QA"'
+
+            buildConfigField 'String', 'SMAPP', '"b114f09a496c0123a3aa7c8cb7754156"'
+            buildConfigField 'String', 'SMAPPS', '"44188a09d5b80b4668d143ad02382ffd"'
+        }
+        dev {
+            applicationId 'com.nanvir.templateapps'
+            versionCode 1
+            versionName "1.0"
+            dimension "versionCode"
+            resValue "string", "app_name", "NANVIR"
+            multiDexEnabled true
+
+//            buildConfigField "java.util.Date", "buildTime", "new java.util.Date(" + getDateAsMillis() + "L)"
+            buildConfigField 'String', 'URL_APPS_SERVER', '"https://gass.sm.co.id/gass-api/mobile/"'
+            buildConfigField 'String', 'FOLDER_NAME', '"NANVIR_DEV"'
+
+            buildConfigField 'String', 'SMAPP', '"b114f09a496c0123a3aa7c8cb7754156"'
+            buildConfigField 'String', 'SMAPPS', '"44188a09d5b80b4668d143ad02382ffd"'
+        }
+        compileOptions {
+            sourceCompatibility JavaVersion.VERSION_1_8
+            targetCompatibility JavaVersion.VERSION_1_8
+        }
+        packagingOptions {
+//            exclude 'META-INF/services/javax.annotation.processing.Processor'
+        }
+    }
+}
+
+dependencies {
+
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.10.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+
+
+    // Dexter
+    implementation 'com.karumi:dexter:6.2.3'
+    implementation 'com.jakewharton:butterknife:10.2.3'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.3'
+    implementation 'com.hannesdorfmann.mosby3:mvp:3.1.1'
+//    implementation project(path: ':scanlibrary')
+
+    // Realm Adapter
+//    annotationProcessor 'io.realm:realm-android:latest-version'
+//    annotationProcessor 'io.realm:realm-android:5.7.0'
+}

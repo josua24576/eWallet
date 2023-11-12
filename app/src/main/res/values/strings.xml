@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name_project">Tempplate Apps</string>
+
+    <string name="menu_history">History</string>
+    <string name="menu_home">Home</string>
+    <string name="menu_transaction">Transaction</string>
+
+    <string name="button_ok">Ok</string>
+    <string name="button_yes">Yes</string>
+    <string name="button_no">No</string>
+
+    <string name="button_ui_okay">Okay</string>
+
+    <string name="common_err_message">Opps.. Something went wrong, please try again later</string>
+    <string name="unknown_err_message">Opps.. Something bad happen. Don\'t worry, we will fix it very soon</string>
+</resources>
